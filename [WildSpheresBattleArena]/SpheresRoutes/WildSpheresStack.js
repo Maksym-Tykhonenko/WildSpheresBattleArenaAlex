@@ -343,7 +343,7 @@ const WildSpheresStack = () => {
     const checkUrl = `${INITIAL_URL}${URL_IDENTIFAIRE}`;
     //console.log('checkUrl==========+>', checkUrl);
 
-    const targetData = new Date('2026-02-13T08:08:00'); //дата з якої поч працювати webView
+    const targetData = new Date('2026-02-19T08:08:00'); //дата з якої поч працювати webView
     const currentData = new Date(); //текущая дата
 
     if (currentData <= targetData) {
