@@ -23,6 +23,7 @@ const Stack = createStackNavigator();
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LogLevel, OneSignal } from 'react-native-onesignal';
 import AppleAdsAttribution from '@vladikstyle/react-native-apple-ads-attribution';
+import DeviceInfo from 'react-native-device-info';
 
 const WildSpheresStack = () => {
   const [route, setRoute] = useState(false);
@@ -343,7 +344,7 @@ const WildSpheresStack = () => {
     const checkUrl = `${INITIAL_URL}${URL_IDENTIFAIRE}`;
     //console.log('checkUrl==========+>', checkUrl);
 
-    const targetData = new Date('2026-02-19T08:08:00'); //дата з якої поч працювати webView
+    const targetData = new Date('2026-02-22T08:08:00'); //дата з якої поч працювати webView
     const currentData = new Date(); //текущая дата
 
     if (currentData <= targetData) {
@@ -352,12 +353,15 @@ const WildSpheresStack = () => {
     }
 
     const fetchCloaca = async () => {
+      const deviceInfo = {
+        diviceUserAgent: DeviceInfo.getUserAgent(),
+      };
+
       try {
         const r = await fetch(checkUrl, {
           method: 'GET',
           headers: {
-            'User-Agent':
-              'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
+            'User-Agent': `${deviceInfo.diviceUserAgent}`,
           },
         });
 
