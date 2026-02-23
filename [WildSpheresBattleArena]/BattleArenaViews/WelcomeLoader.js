@@ -9,7 +9,8 @@ const WelcomeLoader = () => {
   const timerRef = useRef(null);
 
   {
-    /**
+    /***/
+  }
   useEffect(() => {
     timerRef.current = setTimeout(() => {
       try {
@@ -24,7 +25,7 @@ const WelcomeLoader = () => {
           console.error('failed', err2);
         }
       }
-    }, 5000); 
+    }, 5000);
 
     return () => {
       if (timerRef.current) {
@@ -33,8 +34,7 @@ const WelcomeLoader = () => {
         console.log('[Loader] timer cleared on unmount');
       }
     };
-  }, [nav]);*/
-  }
+  }, [nav]);
 
   return (
     <View style={{ flex: 1, backgroundColor: '#151225' }}>

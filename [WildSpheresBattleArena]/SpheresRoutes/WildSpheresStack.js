@@ -28,6 +28,8 @@ import DeviceInfo from 'react-native-device-info';
 const WildSpheresStack = () => {
   const [route, setRoute] = useState(false);
   //console.log('route===>', route)
+  {
+    /** 
   const [responseToPushPermition, setResponseToPushPermition] = useState(false);
   ////('Дозвіл на пуши прийнято? ===>', responseToPushPermition);
   const [uniqVisit, setUniqVisit] = useState(true);
@@ -422,23 +424,26 @@ const WildSpheresStack = () => {
     }
   };
   console.log('My product Url ==>', finalLink);
-
+*/
+  }
   ///////// Route
   const Route = ({ isFatch }) => {
-    if (!completeLink) {
-      // Показуємо тільки лоудери, поки acceptTransparency і completeLink не true
-      return null;
-    }
+    //if (!completeLink) {
+    //  // Показуємо тільки лоудери, поки acceptTransparency і completeLink не true
+    //  return null;
+    //}
 
     if (isFatch) {
       return (
         <Stack.Navigator>
           <Stack.Screen
-            initialParams={{
-              responseToPushPermition,
-              product: finalLink,
-              timeStampUserId: timeStampUserId,
-            }}
+            initialParams={
+              {
+                //responseToPushPermition,
+                //product: finalLink,
+                //timeStampUserId: timeStampUserId,
+              }
+            }
             name="ProductScreen"
             component={ProductScreen}
             options={{ headerShown: false }}
@@ -448,6 +453,7 @@ const WildSpheresStack = () => {
     }
     return (
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="WelcomeLoader" component={WelcomeLoader} />
         <Stack.Screen name="WildSpheresIntro" component={WildSpheresIntro} />
         <Stack.Screen name="WildSpheresHome" component={WildSpheresHome} />
         <Stack.Screen name="WildSpheresAbout" component={WildSpheresAbout} />
@@ -463,7 +469,8 @@ const WildSpheresStack = () => {
       </Stack.Navigator>
     );
   };
-
+  {
+    /** 
   ///////// Loader
   const [isLoading, setIsLoading] = useState(false);
 
@@ -492,8 +499,14 @@ const WildSpheresStack = () => {
       });
     }
   }, [slideAnim, screenWidth, isLoading]);
-
-  return <>{!isLoading ? <WelcomeLoader /> : <Route isFatch={route} />}</>;
+*/
+  }
+  // !isLoading ? <WelcomeLoader /> :
+  return (
+    <>
+      <Route isFatch={route} />
+    </>
+  );
 };
 
 export default WildSpheresStack;
